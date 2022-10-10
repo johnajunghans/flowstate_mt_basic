@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>FlowState Math Tutoring - Home</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body> 
+    <div id="main-wrapper"> 
+
+        <nav>
+            <div id="nav-container">
+                <a href="home.html"><div class="slate" id="logo-wrapper">
+                    <img class="ani-right" src="../icons/logo.png" id="logo" alt="logo">
+                    
+                </div></a>
+                <div id="nav-wrapper">  
+                    
+                    <ul style="padding: 0; margin: 0;" id="nav-links" role="navigation">
+                        <button class="btn btn-menu" id="menu-btn" aria-expanded="false" aria-label="Open Mobile Nav" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-controls="collapseExample">
+                            <img src="../icons/menu.svg" id="btn" alt="logo">
+                        </button>
+                        <!-- **nav mapping goes here**   -->
+                    </ul>                   
+                </div>
+            </div>
+        </nav>
+        
+        <div id="bkg-rec">
+            <div class="slate header ani-left">Contact
+            </div>
+            <!-- START PAGE CONTENT  -->
+           
+            <div class="slate" id="contact-form-wrapper">
+                
+                <form id="contact-form" method="post" action="send" enctype="multipart/form-data">
+                    <div class="form-group ani-right">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input name="name type="text" class="form-control" id="contact-form-name" required>
+                        </div>
+                        <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input name="email" type="email" class="form-control" id="contact-form-email" aria-describedby="emailHelp" required>
+                        <div id="emailHelp" class="form-text">I'll never share your email with anyone else, nor will I send you anything the least bit promotional</div>
+                        </div>
+                    </div>
+                    <div class="form-group ani-left">
+                        <div class="mb-3">
+                            <label for="student or parent" class="form-label">I am a:</label>
+                            <select name="who" class="form-select" aria-label="Default select example" id="contact-form-who">
+                                <option selected>Parent or Student?</option>
+                                <option value="student">Student</option>
+                                <option value="Parent">Parent</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="student or parent" class="form-label">I would like to:</label>
+                            <select name="what" class="form-select" aria-label="Default select example" id="contact-form-what">
+                                <option selected>Schedule a session or ask a question</option>
+                                <option value="Schedule a Session">Schedule a session</option>
+                                <option value="Ask a Question">Ask a question</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="student or parent" class="form-label">I am potentially seeking support for:</label>
+                            <select name="subject" class="form-select" aria-label="Default select example" id="contact-form-subject">
+                                <option selected>Parent or Student?</option>
+                                <option value="Math">Math</option>
+                                <option value="Science">Science</option>
+                                <option value="Executive Functioning">Executive Functioning</option>
+                                <option value="Web Design">Web Design</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group ani-right">
+                        <div class="mb-3">
+                            <label for="details" class="form-label">Here are the details:</label>
+                            <textarea name="details" class="form-control" placeholder="Any specifics you'd like to share?" id="contact-form-details" style="height: 100px"></textarea>
+                        </div>
+                    </div>
+                    <button id="contact-form-button" type="submit" value="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+            <div id="form-submit-popup">
+                Thank you for reaching out!
+                <hr>
+                 You can expect a response from me within 48 hours.
+            </div>
+            <!-- END PAGE CONTENT -->
+        </div>
+        <div class="footer-wrapper">
+            <footer>
+                <small>Copyright © <span id="copyrightYear"></span> FlowState Math Tutoring</small>
+            </footer>
+        </div>
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-analytics.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyBME5ylk-ebpwqiE5mXne24dnlCJpUZM6w",
+              authDomain: "flowstatemt.firebaseapp.com",
+              databaseURL: "https://flowstatemt-default-rtdb.firebaseio.com",
+              projectId: "flowstatemt",
+              storageBucket: "flowstatemt.appspot.com",
+              messagingSenderId: "885963436938",
+              appId: "1:885963436938:web:beaac2f1cebf185dd2ce73",
+              measurementId: "G-PLQ49RKJHB"
+            };
+          
+            import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+            const contactForm = document.querySelector('#contact-form');
+            const contactFormName = document.querySelector('#contact-form-name');
+            const contactFormEmail = document.querySelector('#contact-form-email');
+            const contactFormWho = document.querySelector('#contact-form-who');
+            const contactFormWhat = document.querySelector('#contact-form-what');
+            const contactFormSubject = document.querySelector('#contact-form-subject');
+            const contactFormDetails = document.querySelector('#contact-form-details');
+
+            function saveMessages(name, email, who, what, subject, details){
+                const db = getDatabase();
+
+                let d = new Date();
+                let time = d.getTime();
+                console.log(time);
+                
+                set(ref(db, `messages/${contactFormName.value}@${d}`), {
+                    name: name,
+                    email: email,
+                    who: who,
+                    what: what,
+                    subject: subject,
+                    details: details
+                });
+            }
+
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault();
+
+                let name = contactFormName.value;
+                let email = contactFormEmail.value;
+                let who = contactFormWho.value;
+                let what = contactFormWhat.value;
+                let subject = contactFormSubject.value;
+                let details = contactFormDetails.value;
+
+                saveMessages(name, email, who, what, subject, details);
+
+                
+                document.getElementById('form-submit-popup').style.display = 'block';
+
+            });
+          </script>
+    <script>
+       document.querySelector('#copyrightYear').textContent = new Date().getFullYear().toString();
+    </script>
+    <script src="../scripts/navmap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script type="module">
+        
+    </script>
+</body>
+
+</html>
