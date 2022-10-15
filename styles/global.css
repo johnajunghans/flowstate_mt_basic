@@ -287,6 +287,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: var(--size-fluid-1);
 }
 
 /* ---------PAGE CONTENT STYLES-------------*/
@@ -563,6 +564,18 @@ select option:hover{
     font-size: calc(var(--font-size-fluid-1)*0.9);
 }
 
+form option[selected] {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#form-submit-popup-wrapper {
+    position: absolute;
+    width: 100vw;
+    height: 155%;
+    background-color: rgba(0,0,0,0.25);
+    display: none;
+}
+
 #form-submit-popup {
     width: 90%;
     background-color: white;
@@ -573,8 +586,20 @@ select option:hover{
     padding: var(--size-fluid-2);
     border: 1px solid white;
     border-radius: 10px;
-    margin: var(--size-fluid-1) auto;
-    display: none;
+    margin: 750px auto 0;
+}
+
+#form-submit-popup span {
+    position: absolute;
+    left: 50px;
+    top: 760px;
+    padding: 0 10px 4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#form-submit-popup span:hover {
+    border: 1px solid black;
 }
 
 /* MEDIA QUERIES */

@@ -49,14 +49,14 @@
                         <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
                         <input name="email" type="email" class="form-control" id="contact-form-email" aria-describedby="emailHelp" required>
-                        <div id="emailHelp" class="form-text">I'll never share your email with anyone else, nor will I send you anything the least bit promotional</div>
+                        <div id="emailHelp" class="form-text">I'll never share your email with anyone else, nor will I send you anything the least bit promotional.</div>
                         </div>
                     </div>
                     <div class="form-group ani-left">
                         <div class="mb-3">
                             <label for="student or parent" class="form-label">I am a:</label>
                             <select name="who" class="form-select" aria-label="Default select example" id="contact-form-who">
-                                <option selected>Parent or Student?</option>
+                                <option selected></option>
                                 <option value="student">Student</option>
                                 <option value="Parent">Parent</option>
                                 <option value="Other">Other</option>
@@ -65,8 +65,9 @@
                         <div class="mb-3">
                             <label for="student or parent" class="form-label">I would like to:</label>
                             <select name="what" class="form-select" aria-label="Default select example" id="contact-form-what">
-                                <option selected>Schedule a session or ask a question</option>
-                                <option value="Schedule a Session">Schedule a session</option>
+                                <option selected></option>
+                                <option value="Schedule a free consultation">Schedule a free consultation</option>
+                                <option value="Book a session">Book a session</option>
                                 <option value="Ask a Question">Ask a question</option>
                                 <option value="Other">Other</option>
                             </select>
@@ -74,7 +75,7 @@
                         <div class="mb-3">
                             <label for="student or parent" class="form-label">I am potentially seeking support for:</label>
                             <select name="subject" class="form-select" aria-label="Default select example" id="contact-form-subject">
-                                <option selected>Parent or Student?</option>
+                                <option selected></option>
                                 <option value="Math">Math</option>
                                 <option value="Science">Science</option>
                                 <option value="Executive Functioning">Executive Functioning</option>
@@ -92,17 +93,21 @@
                     <button id="contact-form-button" type="submit" value="submit" class="btn btn-primary">Submit</button>
                   </form>
             </div>
-            <div id="form-submit-popup">
-                Thank you for reaching out!
-                <hr>
-                 You can expect a response from me within 48 hours.
-            </div>
+            
             <!-- END PAGE CONTENT -->
         </div>
         <div class="footer-wrapper">
             <footer>
                 <small>Copyright © <span id="copyrightYear"></span> FlowState Math Tutoring</small>
             </footer>
+        </div>
+        <div id="form-submit-popup-wrapper">
+            <div id="form-submit-popup">
+                <span id="form-submit-popup-close">x</span>  
+                Thank you for reaching out!
+                <hr>
+                Expect a response via email within 48 hours.
+            </div>
         </div>
         <script type="module">
             // Import the functions you need from the SDKs you need
@@ -140,11 +145,8 @@
 
             function saveMessages(name, email, who, what, subject, details){
                 const db = getDatabase();
-
                 let d = new Date();
-                let time = d.getTime();
-                console.log(time);
-                
+
                 set(ref(db, `messages/${contactFormName.value}@${d}`), {
                     name: name,
                     email: email,
@@ -167,10 +169,14 @@
 
                 saveMessages(name, email, who, what, subject, details);
 
-                
-                document.getElementById('form-submit-popup').style.display = 'block';
+                document.getElementById('form-submit-popup-wrapper').style.display = 'block';
 
             });
+
+            document.getElementById('form-submit-popup-close').addEventListener('click', () => {
+                document.getElementById('form-submit-popup-wrapper').style.display = 'none';
+            })
+
           </script>
     <script>
        document.querySelector('#copyrightYear').textContent = new Date().getFullYear().toString();
