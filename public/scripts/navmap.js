@@ -3,7 +3,7 @@
 const navLinks = [
     {
         name: 'Home',
-        url: 'home.html',
+        url: '/',
         style: 'collapse'
     },
     {
