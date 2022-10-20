@@ -17,7 +17,7 @@
 
         <nav>
             <div id="nav-container">
-                <a href="home.html"><div class="slate colored-tiles" id="logo-wrapper">
+                <a href="/"><div class="slate colored-tiles" id="logo-wrapper">
                     <img class="ani-right" src="../icons/logo.png" id="logo" alt="logo">
                     
                 </div></a>
@@ -109,68 +109,70 @@
     <script src="scripts/navmap.js"></script>
     <!-- <script src="scripts/services-grid.js"></script> -->
     <script>
+
         const mathSubjects = [
-    "K-5 Math",
-    "6-7 Math",
-    "Pre-Algebra",
-    "Algebra 1",
-    "Geometry",
-    "Algebra 2",
-    "Trigonometry",
-    "Precalculus",
-    "Calculus",
-    "AB/BC Calc",
-    "AP/IB Calc",
-    "Statistics"
-];
+            "K-5 Math",
+            "6-7 Math",
+            "Pre-Algebra",
+            "Algebra 1",
+            "Geometry",
+            "Algebra 2",
+            "Trigonometry",
+            "Precalculus",
+            "Calculus",
+            "AB/BC Calc",
+            "AP/IB Calc",
+            "Statistics"
+        ];
 
-const scienceSubjects = [
-    "K-5 Science",
-    "6-8 Science",
-    "Biology",
-    "Chemistry",
-    "AP/IB Biology",
-    "AP/IB Chemistry"
-]
+        const scienceSubjects = [
+            "K-5 Science",
+            "6-8 Science",
+            "Biology",
+            "Chemistry",
+            "AP/IB Biology",
+            "AP/IB Chemistry"
+        ]
 
-const mentorship = [
-    "Calendar/Planner Use",
-    "Effective Goal Setting",
-    "Positive Habit Formation",
-    "Test Taking Strategies",
-    "Overcoming Test Anxiety",
-    "Mindfulness Techniques"
-]
+        const mentorship = [
+            "Calendar/Planner Use",
+            "Effective Goal Setting",
+            "Positive Habit Formation",
+            "Test Taking Strategies",
+            "Overcoming Test Anxiety",
+            "Mindfulness Techniques"
+        ]
 
-// function gridCol(data){
-//     let columns = Math.floor(Math.sqrt(data.length));
-//     let varGridColumns = `grid-template-columns: repeat(${columns}, 1fr)` 
-//     return varGridColumns;
-// }
+        // function gridCol(data){
+        //     let columns = Math.floor(Math.sqrt(data.length));
+        //     let varGridColumns = `grid-template-columns: repeat(${columns}, 1fr)` 
+        //     return varGridColumns;
+        // }
 
-function gridMap(data, id){
-    let gridContainer = document.querySelector(`#${id}`);
-    // let varGridColumns = gridCol(data);
-    // console.log(varGridColumns);
-    // gridContainer.setAttribute('style', `${varGridColumns}`);
-    data.map(subject => {
-        let subjectWrapper = document.createElement('div');
-        subjectWrapper.setAttribute('class', 'subject-wrapper');
-        let image = document.createElement('img');
-        image.setAttribute('src', '../icons/check.svg');
-        image.setAttribute('alt', 'checkmark');
-        let subjectName = document.createElement('h3');
-        subjectName.setAttribute('class', 'subject-name');
-        subjectName.innerText = `${subject}`;
-        subjectWrapper.append(image);
-        subjectWrapper.append(subjectName);
-        gridContainer.append(subjectWrapper);
-    })
-}
+        function gridMap(data, id){
+            let gridContainer = document.querySelector(`#${id}`);
+            // let varGridColumns = gridCol(data);
+            // console.log(varGridColumns);
+            // gridContainer.setAttribute('style', `${varGridColumns}`);
+            data.map(subject => {
+                let subjectWrapper = document.createElement('div');
+                subjectWrapper.setAttribute('class', 'subject-wrapper');
+                let image = document.createElement('img');
+                image.setAttribute('src', '../icons/check.svg');
+                image.setAttribute('alt', 'checkmark');
+                let subjectName = document.createElement('h3');
+                subjectName.setAttribute('class', 'subject-name');
+                subjectName.innerText = `${subject}`;
+                subjectWrapper.append(image);
+                subjectWrapper.append(subjectName);
+                gridContainer.append(subjectWrapper);
+            })
+        }
 
-gridMap(mathSubjects, "math");
-gridMap(scienceSubjects, "science");
-gridMap(mentorship, "mentorship");
+        gridMap(mathSubjects, "math");
+        gridMap(scienceSubjects, "science");
+        gridMap(mentorship, "mentorship");
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
